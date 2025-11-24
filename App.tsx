@@ -10,10 +10,11 @@ const App = () => {
   },[])
   return (
     <SafeAreaProvider>
-   
-    <View>
-      <Text className='text-white'>App</Text>
-    </View>
+      <SafeAreaView style={styles.safeArea}>
+        <View>
+          <Text className='text-white'>App</Text>
+        </View>
+      </SafeAreaView>
     </SafeAreaProvider>
     
     
@@ -22,4 +23,9 @@ const App = () => {
 
 export default App
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+})
