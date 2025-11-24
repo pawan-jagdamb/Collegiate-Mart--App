@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import "./global.css"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import AppNavigation from './src/navigation/AppNavigation'
 
 const App = () => {
   useEffect(()=>{
@@ -10,11 +11,7 @@ const App = () => {
   },[])
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.safeArea}>
-        <View>
-          <Text className='text-white'>App</Text>
-        </View>
-      </SafeAreaView>
+      <AppNavigation/>
     </SafeAreaProvider>
     
     

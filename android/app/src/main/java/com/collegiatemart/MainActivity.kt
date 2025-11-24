@@ -2,6 +2,7 @@ package com.collegiatemart
 
   import android.os.Bundle;
     import org.devio.rn.splashscreen.SplashScreen;
+    import com.swmansion.rnscreens.fragment.restoration.RNScreensFragmentFactory
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -23,6 +24,7 @@ class MainActivity : ReactActivity() {
 
      override fun onCreate(savedInstanceState: Bundle?) {
         SplashScreen.show(this)
+        supportFragmentManager.fragmentFactory = RNScreensFragmentFactory()
         super.onCreate(savedInstanceState)
     }
 
