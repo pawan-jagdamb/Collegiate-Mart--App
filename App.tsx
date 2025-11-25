@@ -4,15 +4,22 @@ import SplashScreen from 'react-native-splash-screen'
 import "./global.css"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import AppNavigation from './src/navigation/AppNavigation'
+import ToastManager from 'toastify-react-native'
 
 const App = () => {
   useEffect(()=>{
     SplashScreen.hide()
   },[])
   return (
-    <SafeAreaProvider>
+    // <View>
+    <>
       <AppNavigation/>
-    </SafeAreaProvider>
+      <ToastManager/>
+    </>
+
+   
+    
+   
     
     
   )
@@ -20,9 +27,3 @@ const App = () => {
 
 export default App
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
-})
