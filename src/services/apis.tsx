@@ -1,16 +1,10 @@
-import { Platform } from "react-native"
+// export const BASE_URL = "http://192.168.1.5:5000/api";
 
-const ANDROID_LOCALHOST = "http://10.0.2.2:5000"
-const DEFAULT_LOCALHOST = "http://localhost:5000"
+// Collegiate Mart
+// Backend :https://collegiate-mart-backend.onrender.com
+// Frontend : https://collegiate-mart-frontend.onrender.com
 
-const getBaseUrl = () => {
-  const host = Platform.OS === "android" ? ANDROID_LOCALHOST : DEFAULT_LOCALHOST
-  return `${host}/api`
-}
-
-export const BASE_URL = getBaseUrl()
-
-
+export const BASE_URL = "http://localhost:5000/api";
 
 export const endpoints = {
   BASE_URL,

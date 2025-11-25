@@ -5,7 +5,9 @@ import "./global.css"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import AppNavigation from './src/navigation/AppNavigation'
 import ToastManager from 'toastify-react-native'
-
+import { Provider } from 'react-redux'
+import { store ,persistor} from './src/redux/store/store'
+import { PersistGate } from 'redux-persist/integration/react'
 const App = () => {
   useEffect(()=>{
     SplashScreen.hide()
@@ -13,8 +15,12 @@ const App = () => {
   return (
     // <View>
     <>
-      <AppNavigation/>
-      <ToastManager/>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppNavigation/>
+          <ToastManager/>
+        </PersistGate>
+      </Provider>
     </>
 
    

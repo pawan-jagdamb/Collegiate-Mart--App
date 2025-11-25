@@ -1,28 +1,23 @@
-import { Alert, Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native'
+import { Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ArrowLeftIcon, EyeIcon, EyeSlashIcon } from 'react-native-heroicons/solid'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { RootStackParamList } from '../navigation/types'
-
-type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>
+import { LoginScreenNavigationProp, RootStackParamList } from '../navigation/types'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../redux/store/store'
+import { login } from '../services/operations/authAPI'
+import { Toast } from 'toastify-react-native'
 
 const LoginInScreen = () => {
   const navigation = useNavigation<LoginScreenNavigationProp>()
+  const dispatch = useDispatch<AppDispatch>()
   const passwordInputRef = useRef<TextInput>(null)
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   
-  const showToast = (message: string) => {
-    if (Platform.OS === 'android') {
-      ToastAndroid.show(message, ToastAndroid.SHORT)
-    } else {
-      Alert.alert('', message)
-    }
-  }
-
   const isValidEmail = (value: string) => /\S+@\S+\.\S+/.test(value.trim())
 
   const handleBack = () => {
@@ -35,23 +30,23 @@ const LoginInScreen = () => {
 
   const handleLogin = () => {
     if (!email.trim()) {
-      showToast('Please enter your email address.')
+      Toast.error('Please enter your email address.')
       return
     }
 
     if (!isValidEmail(email)) {
-      showToast('Please enter a valid email address.')
+      Toast.error('Please enter a valid email address.')
       return
     }
 
     if (!password.trim()) {
-      showToast('Please enter your password.')
+      Toast.error('Please enter your password.')
       return
     }
 
-    // TODO: Implement login logic
-    console.log('Login attempted with:', { email, password })
-    // navigation.navigate('Home') // Navigate after successful login
+    dispatch(
+      login(email.trim(), password, route => navigation.navigate(route as keyof RootStackParamList)),
+    )
   }
 
   const handleForgotPassword = () => {
