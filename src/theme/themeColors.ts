@@ -8,7 +8,8 @@ export enum Colors {
     backgroundPrimary = '#FFFFFF',
     backgroundSecondary = '#8152f7',
     backgroundDark = '#1a1a1a',
-    backgroundLight = '#fafafa'
+    backgroundLight = '#fafafa',
+    orange = '#EE8924',
 }
 export enum Fonts {
     Regular = 'Okra-Regular',

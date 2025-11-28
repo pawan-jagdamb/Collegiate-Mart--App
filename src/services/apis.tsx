@@ -1,10 +1,19 @@
-// export const BASE_URL = "http://192.168.1.5:5000/api";
+// For Android with ADB port forwarding - localhost works after running: adb reverse tcp:5000 tcp:5000
+// export const BASE_URL = "http://localhost:5000/api";
+
+// For iOS Simulator - localhost works:
+// export const BASE_URL = "http://localhost:5000/api";
+
+// For physical device - use your computer's local IP address
+// Make sure your device and computer are on the same WiFi network
+// export const BASE_URL = "http://10.225.4.66:5000/api";
+
+// For production/deployed backend (uncomment to use):
+export const BASE_URL = "https://collegiate-mart-backend.onrender.com/api";
 
 // Collegiate Mart
 // Backend :https://collegiate-mart-backend.onrender.com
 // Frontend : https://collegiate-mart-frontend.onrender.com
-
-export const BASE_URL = "http://localhost:5000/api";
 
 export const endpoints = {
   BASE_URL,
@@ -20,7 +29,7 @@ export const endpoints = {
     GET_A_LISTING:BASE_URL+'/listing/get',
     UPDATE_LISTING:BASE_URL+'/listing/update',
     GET_USER:BASE_URL+ "/user",
-    GET_LISTING:BASE_URL+'/listing',
+    GET_LISTING:BASE_URL+'/listing/get',
     GOOGLE_AUTH: BASE_URL+'/auth/google',
     UPDATE_USER:BASE_URL+'/user/update',
     DELETE_USER:BASE_URL+'/user/delete',

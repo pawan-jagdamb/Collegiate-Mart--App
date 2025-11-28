@@ -117,7 +117,7 @@ export const login =
       await AsyncStorage.setItem('user', JSON.stringify(user));
 
       Toast.success('Login successful');
-      navigate('Product');
+      navigate('Drawer');
     } catch (error: any) {
       const message = error?.response?.data?.message ?? 'Login failed';
       console.log("Error in login",error)
