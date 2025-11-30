@@ -9,16 +9,35 @@ type ProductCardProps = {
   price?: number;
   image?: any;
   listing?: Listing;
+  disabled?: boolean;
 };
 
-const ProductCard = ({ name = 'Topi', price = 100, image, listing }: ProductCardProps) => {
+const ProductCard = ({ name = 'Topi', price = 100, image, listing, disabled = false }: ProductCardProps) => {
   const navigation = useNavigation<ProductItemScreenNavigationProp>();
 
   const handlePress = () => {
-    if (listing) {
+    if (listing && !disabled) {
       navigation.navigate('ProductItem', { listing });
     }
   };
+
+  const CardContent = (
+    <>
+      <Image source={image || require('../assets/topi.jpeg')} style={styles.image} />
+      <View style={styles.content}>
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.price}>Price: ${price}</Text>
+      </View>
+    </>
+  );
+
+  if (disabled) {
+    return (
+      <View style={styles.container}>
+        {CardContent}
+      </View>
+    );
+  }
 
   return (
     <TouchableOpacity 
@@ -26,11 +45,7 @@ const ProductCard = ({ name = 'Topi', price = 100, image, listing }: ProductCard
       onPress={handlePress}
       activeOpacity={0.8}
     >
-      <Image source={image || require('../assets/topi.jpeg')} style={styles.image} />
-      <View style={styles.content}>
-        <Text style={styles.title}>{name}</Text>
-        <Text style={styles.price}>Price: ${price}</Text>
-      </View>
+      {CardContent}
     </TouchableOpacity>
   )
 }

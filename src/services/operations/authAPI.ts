@@ -133,11 +133,11 @@ export const logout =
     dispatch(signInStart());
     Toast.info('Signing out...');
     try {
-      const response = await apiConnector('GET', LOGOUT_API);
-      const data = response.data as { success: boolean; message?: string };
-      if (!data.success) {
-        throw new Error(data.message);
-      }
+      // const response = await apiConnector('GET', LOGOUT_API);
+      // const data = response.data as { success: boolean; message?: string };
+      // if (!data.success) {
+      //   throw new Error(data.message);
+      // }
 
       dispatch(setToken(null));
       dispatch(resetUserState());
@@ -145,7 +145,7 @@ export const logout =
       await Keychain.resetGenericPassword();
       await AsyncStorage.multiRemove(['persist:root', 'user']);
 
-      Toast.success(data.message ?? 'Signed out');
+      Toast.success('Signed out');
       navigate('Start');
     } catch (error: any) {
       const message = error?.response?.data?.message ?? 'Logout failed';

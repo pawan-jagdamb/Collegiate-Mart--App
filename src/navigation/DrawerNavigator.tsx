@@ -7,6 +7,8 @@ import ProductScreen from '../screens/ProductScreen';
 import MyProducts from '../screens/MyProducts';
 import ProfileScreen from '../screens/ProfileScreen';
 import ProductItem from '../screens/ProductItem';
+import AddProductScreen from '../screens/AddProductScreen';
+import ChatScreen from '../screens/ChatScreen';
 import { HomeStackParamList } from './types';
 
 const Drawer = createDrawerNavigator();
@@ -34,6 +36,8 @@ const DrawerNavigator = () => {
     <Drawer.Screen name='Home' component={HomeStackNavigator}/>
     <Drawer.Screen name = 'Profile' component={ProfileScreen}/>
     <Drawer.Screen name= 'MyProduct' component={MyProducts}/>
+    <Drawer.Screen name='AddProduct' component={AddProductScreen}/>
+    <Drawer.Screen name='Chat' component={ChatScreen}/>
 
    </Drawer.Navigator>
   )

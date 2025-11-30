@@ -33,4 +33,6 @@ export const endpoints = {
     GOOGLE_AUTH: BASE_URL+'/auth/google',
     UPDATE_USER:BASE_URL+'/user/update',
     DELETE_USER:BASE_URL+'/user/delete',
+    SEND_MESSAGE: BASE_URL + '/v1/message/send',
+    GET_MESSAGES: BASE_URL + '/v1/message/get',
   } 

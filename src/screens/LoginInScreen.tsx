@@ -45,7 +45,7 @@ const LoginInScreen = () => {
     }
 
     dispatch(
-      login(email.trim(), password, route => navigation.navigate(route as keyof RootStackParamList)),
+      login(email.trim(), password, route => (navigation as any).navigate(route as keyof RootStackParamList)),
     )
   }
 
